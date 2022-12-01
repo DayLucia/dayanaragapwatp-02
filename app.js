@@ -33,29 +33,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* - FUNCION 1:  Obtiene el texto del textArea y guarda en el texto en el array - */
 btnSave.addEventListener('click', ()=>{
-  // //Obtengo el texto
-  // let texto = textArea.value;
+  //Obtengo el texto
+  let texto = textArea.value;
 
-  // //Obtengo la fecha
-  // let tiempo = Date.now();
-  // let date = new Date(tiempo);
-  // let fecha = date.toLocaleDateString();
+  //Obtengo la fecha
+  let tiempo = Date.now();
+  let date = new Date(tiempo);
+  let fecha = date.toLocaleDateString();
 
-  // //Verifico y creo la notita
-  // if(texto.length !== 0){
-  //   let nota = {
-  //     notita : texto,
-  //     fecha : fecha,
-  //   };
-  //   lista.push(nota);
-  // }
-  // guardarNotas(lista);
+  //Verifico y creo la notita
+  if(texto.length !== 0){
+    let nota = {
+      notita : texto,
+      fecha : fecha,
+    };
+    lista.push(nota);
+  }
+  guardarNotas(lista);
 })
 
 /* -------- FUNCION 2: Recibe el array y lo guarda en el localStorage ------- */
 function guardarNotas(lista){
   
-  // localStorage.setItem('nota',JSON.stringify(lista));
+  localStorage.setItem('nota',JSON.stringify(lista));
 
   renderizarNotas(lista);
 }
@@ -68,22 +68,23 @@ function leerNotas(){
     console.log(lista, 'lista json')
       return lista;
   } else{
+    console.log('No hay notitas disponibles.')
     return lista;
   }
 }
 
 /* -------- FUNCION 4: Recibe el array y lo renderiza en el container ------- */
 function renderizarNotas(array){
-  // let html;
-  // if(array.length = 0){
-  //   html = `<h1>¡Ups, aun no añadiste notitas!</h1>`;
-  // }else{
-  //   array.forEach(dato => {
-  //     html = `
-  //             <p>${dato.fecha}</p>
-  //             <p>${dato.notita}</p>`
-  //   });
+  let html;
+  if(array.length = 0){
+    html = `<h1>¡Ups, aun no añadiste notitas!</h1>`;
+  }else{
+    array.forEach(dato => {
+      html = `
+              <p>${dato.fecha}</p>
+              <p>${dato.notita}</p>`
+    });
 
-  // }
+  }
   
 }
