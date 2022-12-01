@@ -111,5 +111,5 @@ caches.open(nonitasCache).then(cache =>{
     'https://daylucia.github.io/dayanaragapwatp-02/icons/android-icon-72x72.png',
     'https://daylucia.github.io/dayanaragapwatp-02/icons/android-icon-48x48.png',
     'https://daylucia.github.io/dayanaragapwatp-02/icons/android-icon-36x36.png',
-  ])
-})
+  ]);
+});
