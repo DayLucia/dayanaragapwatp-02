@@ -46,14 +46,14 @@ btnSave.addEventListener('click', ()=>{
   let nota;
 
   //Verifico y creo la notita
-  // if(texto.textLength !== 0){
+  if(texto != ""){
     nota = {
       notita : texto,
       fecha : fecha,
     }
-    // };
-    //push
     lista.push(nota);
+    };
+    //push
     
     // btnSave.color.blue;
 
@@ -67,9 +67,9 @@ btnSave.addEventListener('click', ()=>{
 })
 
 /* -------- FUNCION 2: Recibe el array y lo guarda en el localStorage ------- */
-function guardarNotas(lista){
+function guardarNotas(array){
   
-  localStorage.setItem('nota',JSON.stringify(lista));
+  localStorage.setItem('nota',JSON.stringify(array));
 
   renderizarNotas(lista);
 }
@@ -89,16 +89,16 @@ function leerNotas(){
 
 /* -------- FUNCION 4: Recibe el array y lo renderiza en el container ------- */
 function renderizarNotas(array){
-  let html;
-  if(array.length = 0){
+  let html= ``;
+  if(array.length == 0){
     html = `<h1>¡Ups, aun no añadiste notitas!</h1>`;
   }else{
     array.forEach(dato => {
-      html = `
-              <p>${dato.fecha}</p>
-              <p>${dato.notita}</p>`
-    });
-
-  }
+      html += `
+              <li>${dato.fecha}</li>
+              <li>${dato.notita}</li>`
+            });
+          }
+          container.innerHTML = html;
   
 }
