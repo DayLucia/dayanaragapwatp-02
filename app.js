@@ -51,9 +51,12 @@ btnSave.addEventListener('click', ()=>{
       notita : texto,
       fecha : fecha,
     };
-    // lista.push(nota);
+    // btnSave.color.blue;
+    textArea = '';
+    lista.push(nota);
   }
-  guardarNotas(nota);
+  console.log(lista, 'notitas');
+  guardarNotas(lista);
 })
 
 /* -------- FUNCION 2: Recibe el array y lo guarda en el localStorage ------- */
