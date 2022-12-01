@@ -98,7 +98,7 @@ caches.open(nonitasCache);
 //VERIFICAMOS SI EXISTE.
 caches.has(nonitasCache).then(respuesta =>{
   console.log(respuesta, 'nonitasCache existe');
-})
+});
 
 //AGREGAMOS MULTIPLES ELEMENTOS AL CACHE.
 
