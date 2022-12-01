@@ -62,18 +62,14 @@ function guardarNotas(lista){
 
 /* --------- FUNCION 3: Lee los datos del localStorage y lo retorna --------- */
 function leerNotas(){
-  // let lista;
-  // if(localStorage.getItem('nota') !== false){
-  //   // lista = ;
-  //   lista = JSON.parse(localStorage.getItem('nota'));
-  //   console.log(lista, 'lista json')
-
-  //   // lista = [];
-  // } else{
-  //   lista = localStorage.getItem('nota');
-  //   // let nota = JSON.parse(lista);
-  //   // return nota;
-  // }
+  if(localStorage.nota){
+    let traerNota = localStorage.getItem('nota')  
+    lista = JSON.parse(traerNota);
+    console.log(lista, 'lista json')
+      return lista;
+  } else{
+    return lista;
+  }
 }
 
 /* -------- FUNCION 4: Recibe el array y lo renderiza en el container ------- */
