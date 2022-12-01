@@ -19,7 +19,6 @@ self.addEventListener('install', function (e){
             'https://daylucia.github.io/dayanaragapwatp-02/app.js',
             'https://daylucia.github.io/dayanaragapwatp-02/index.html',
             'https://daylucia.github.io/dayanaragapwatp-02/icons',
-            'https://daylucia.github.io/dayanaragapwatp-02/icons/icon-72x72.png',
             'https://daylucia.github.io/dayanaragapwatp-02/style.css',
         ])
     })

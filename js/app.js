@@ -86,3 +86,30 @@ function renderizarNotas(array){
           container.innerHTML = html;
   
 }
+
+/**********************CACHE************************/
+
+//CREAMOS CACHE.
+
+let nonitasCache = 'nonitasCache';
+caches.open(nonitasCache);
+
+
+//VERIFICAMOS SI EXISTE.
+caches.has(nonitasCache).then(respuesta =>{
+  console.log(respuesta, 'nonitasCache existe');
+})
+
+//AGREGAMOS MULTIPLES ELEMENTOS AL CACHE.
+
+caches.open(nonitasCache).then(cache =>{
+  cache.addAll([
+    'https://daylucia.github.io/dayanaragapwatp-02/index.html',
+    'https://daylucia.github.io/dayanaragapwatp-02/js/app.js',
+    'https://daylucia.github.io/dayanaragapwatp-02/css/style.css',
+    'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css',
+    'https://daylucia.github.io/dayanaragapwatp-02/icons/android-icon-72x72.png',
+    'https://daylucia.github.io/dayanaragapwatp-02/icons/android-icon-48x48.png',
+    'https://daylucia.github.io/dayanaragapwatp-02/icons/android-icon-36x36.png',
+  ])
+})
