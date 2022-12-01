@@ -91,13 +91,13 @@ function renderizarNotas(array){
 
 //CREAMOS CACHE.
 
-let nonitasCache = 'nonitasCache';
+let nonitasCache = 'NonitasCache';
 caches.open(nonitasCache);
 
 
 //VERIFICAMOS SI EXISTE.
 caches.has(nonitasCache).then(respuesta =>{
-  console.log(respuesta, 'nonitasCache existe');
+  console.log(respuesta, 'NonitasCache existe');
 });
 
 //AGREGAMOS MULTIPLES ELEMENTOS AL CACHE.
