@@ -3,9 +3,6 @@ if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('https://daylucia.github.io/dayanaragapwatp-02/sw.js').then(function(registration) {
         // Si es exitoso
         console.log('SW registrado correctamente');
-      }, function(err) {
-        // Si falla
-        console.log('SW fallo');
-      });
-    });
-  }
+      })})} else{
+        console.log('fallo al registrar SW')
+      };
