@@ -2,11 +2,13 @@
 "name": "Notitas Bonitas",
 "short_name": "Nonitas",
 "start_url": "https://daylucia.github.io/dayanaragapwatp-02/index.html",
+"id": "/dayanaragapwatp-02/index.html",
 "display": "standalone",
 "description":"Aplicación de notas",
 "theme_color": "#1976d2",
 "background_color": "white",
 "orientation": "portrait",
+"lang": "español",
 "icons":[
     {"src":"https://daylucia.github.io/dayanaragapwatp-02/icons/android-icon-36x36.png",
     "sizes":"36x36",
