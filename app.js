@@ -46,17 +46,23 @@ btnSave.addEventListener('click', ()=>{
   let nota;
 
   //Verifico y creo la notita
-  if(texto.textLength !== 0){
+  // if(texto.textLength !== 0){
     nota = {
       notita : texto,
       fecha : fecha,
-    };
-    // btnSave.color.blue;
-    textArea.value = '';
+    }
+    // };
+    //push
     lista.push(nota);
+    
+    // btnSave.color.blue;
+
+    //limpio textarea
+    textArea.value = '';  
+
+    
     console.log(lista, 'notitas');
-  }
-  console.log(lista, 'notitas');
+  // console.log(lista, 'notitas');
   guardarNotas(lista);
 })
 
