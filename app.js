@@ -3,22 +3,6 @@ const btnSave = document.querySelector('#btn-save');
 const textArea = document.querySelector('#text-1');
 let container = document.querySelector('.collection');
 let lista = [];
-const cacheName = 'cache1';
-// FORMATO:
-//let lista = [ { nota: 'descripción de la nota', fecha: '17/11/2022'} ];
-
-//CACHE
-self.addEventListener('install', function(e){
-  console.log(e, 'instalando');
-  let cache = caches.open(cacheName).then(cache =>{
-    return cache.addAll([
-      'index.html',
-      'app.js',
-      'icon-72x72.png'
-    ])
-  })
-  e.waitUntil(cache);
-})
 
 document.addEventListener('DOMContentLoaded', function() {
     let sideNav = document.querySelectorAll('.sidenav');
