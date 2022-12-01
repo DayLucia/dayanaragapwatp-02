@@ -105,7 +105,7 @@ caches.has(nonitasCache).then(respuesta =>{
 caches.open(nonitasCache).then(cache =>{
   cache.addAll([
     'https://daylucia.github.io/dayanaragapwatp-02/index.html',
-    'https://daylucia.github.io/dayanaragapwatp-02/js/app.js',
+    'https://daylucia.github.io/dayanaragapwatp-02/app.js',
     'https://daylucia.github.io/dayanaragapwatp-02/css/style.css',
     'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css',
     'https://daylucia.github.io/dayanaragapwatp-02/icons/android-icon-72x72.png',
