@@ -103,7 +103,7 @@ caches.has(nonitasCache).then(respuesta =>{
 //AGREGAMOS MULTIPLES ELEMENTOS AL CACHE.
 
 caches.open(nonitasCache).then(cache =>{
-  cache.add('https://daylucia.github.io/dayanaragapwatp-02/index.html');
+  cache.add('/index.html');
   cache.add('https://daylucia.github.io/dayanaragapwatp-02/app.js');
   cache.add('https://daylucia.github.io/dayanaragapwatp-02/css/style.css');
   cache.add('https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css');
