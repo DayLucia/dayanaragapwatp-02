@@ -13,9 +13,11 @@ self.addEventListener('install', function (e){
     console.log(e);
     const cache = caches.open('cacheName').then( cache => {
         return cache.addAll([
-            'app.js',
-            'index.html',
-            'icons',
+            'https://daylucia.github.io/dayanaragapwatp-02/app.js',
+            'https://daylucia.github.io/dayanaragapwatp-02/index.html',
+            'https://daylucia.github.io/dayanaragapwatp-02/icons',
+            'https://daylucia.github.io/dayanaragapwatp-02/icons/icon-72x72.png',
+            'https://daylucia.github.io/dayanaragapwatp-02/style.css',
         ])
     })
     e.waitUntil( cache );
