@@ -52,8 +52,9 @@ btnSave.addEventListener('click', ()=>{
       fecha : fecha,
     };
     // btnSave.color.blue;
-    textArea = '';
+    textArea.value = '';
     lista.push(nota);
+    console.log(lista, 'notitas');
   }
   console.log(lista, 'notitas');
   guardarNotas(lista);
