@@ -10,7 +10,7 @@ self.addEventListener('install', function (e){
           'app.js',
           'icons/android-icon-72x72.png',
           'css/style.css',
-          'sw.js',
+          // 'sw.js',
         ])
     })
     e.waitUntil( cache );

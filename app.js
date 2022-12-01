@@ -106,7 +106,7 @@ caches.open(nonitasCache).then(cache =>{
   cache.add('index.html');
   cache.add('app.js');
   cache.add('css/style.css');
-  cache.add('sw.js');
+  // cache.add('sw.js');
   cache.add('https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css');
   cache.add('icons/android-icon-72x72.png');
   cache.add('icons/android-icon-48x48.png');
