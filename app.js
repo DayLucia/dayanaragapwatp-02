@@ -67,11 +67,11 @@ btnSave.addEventListener('click', ()=>{
 })
 
 /* -------- FUNCION 2: Recibe el array y lo guarda en el localStorage ------- */
-function guardarNotas(nota){
+function guardarNotas(lista){
   
-  localStorage.setItem('nota',JSON.stringify(nota));
+  localStorage.setItem('nota',JSON.stringify(lista));
 
-  renderizarNotas(nota);
+  renderizarNotas(lista);
 }
 
 /* --------- FUNCION 3: Lee los datos del localStorage y lo retorna --------- */
