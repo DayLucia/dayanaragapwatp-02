@@ -11,15 +11,15 @@ if ('serviceWorker' in navigator) {
 
 
 /*------------------------------------------CACHE E INSTALACIÓN------------------------------------------------*/
-const cacheName = 'cache-1';
+const cacheName = 'cache-2';
 self.addEventListener('install', function (e){
     console.log(e);
-    const cache = caches.open('cacheName').then( cache => {
+    const cache = caches.open(cacheName).then( cache => {
         return cache.addAll([
             'https://daylucia.github.io/dayanaragapwatp-02/app.js',
             'https://daylucia.github.io/dayanaragapwatp-02/index.html',
             'https://daylucia.github.io/dayanaragapwatp-02/icons',
-            'https://daylucia.github.io/dayanaragapwatp-02/style.css',
+            'https://daylucia.github.io/dayanaragapwatp-02/css/style.css',
         ])
     })
     e.waitUntil( cache );
