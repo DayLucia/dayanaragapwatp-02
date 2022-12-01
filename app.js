@@ -35,29 +35,33 @@ document.addEventListener('DOMContentLoaded', function() {
 btnSave.addEventListener('click', ()=>{
   //Obtengo el texto
   let texto = textArea.value;
-
+  console.log(texto, 'textarea texto');
   //Obtengo la fecha
   let tiempo = Date.now();
   let date = new Date(tiempo);
   let fecha = date.toLocaleDateString();
+  console.log(fecha, 'fecha');
+
+  //Creo la variable que tendrá la nota
+  let nota;
 
   //Verifico y creo la notita
-  if(texto.length !== 0){
-    let nota = {
+  if(texto.textLength !== 0){
+    nota = {
       notita : texto,
       fecha : fecha,
     };
-    lista.push(nota);
+    // lista.push(nota);
   }
-  guardarNotas(lista);
+  guardarNotas(nota);
 })
 
 /* -------- FUNCION 2: Recibe el array y lo guarda en el localStorage ------- */
-function guardarNotas(lista){
+function guardarNotas(nota){
   
-  localStorage.setItem('nota',JSON.stringify(lista));
+  localStorage.setItem('nota',JSON.stringify(nota));
 
-  renderizarNotas(lista);
+  renderizarNotas(nota);
 }
 
 /* --------- FUNCION 3: Lee los datos del localStorage y lo retorna --------- */
