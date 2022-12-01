@@ -6,8 +6,11 @@ if ('serviceWorker' in navigator) {
       })})}
       else{
         console.log('fallo al registrar SW')
+        // console.error();
       };
 
+
+/*------------------------------------------CACHE E INSTALACIÓN------------------------------------------------*/
 const cacheName = 'cache-1';
 self.addEventListener('install', function (e){
     console.log(e);

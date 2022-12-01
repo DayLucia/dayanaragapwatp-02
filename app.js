@@ -1,4 +1,4 @@
-navigator.serviceWorker.register('sw.js');
+// navigator.serviceWorker.register('/sw.js');
 const btnSave = document.querySelector('#btn-save');
 const textArea = document.querySelector('#text-1');
 let container = document.querySelector('.collection');
