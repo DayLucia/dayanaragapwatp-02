@@ -16,10 +16,12 @@ self.addEventListener('install', function (e){
     console.log(e);
     const cache = caches.open(cacheName).then( cache => {
         return cache.addAll([
-            'https://daylucia.github.io/dayanaragapwatp-02/app.js',
-            'https://daylucia.github.io/dayanaragapwatp-02/index.html',
-            'https://daylucia.github.io/dayanaragapwatp-02/icons',
-            'https://daylucia.github.io/dayanaragapwatp-02/css/style.css',
+          '/',
+          'index.html',
+          'app.js',
+          'icons/android-icon-72x72.png',
+          'css/style.css',
+          'sw.js',
         ])
     })
     e.waitUntil( cache );
@@ -27,7 +29,7 @@ self.addEventListener('install', function (e){
 self.addEventListener( 'fetch', e =>{
     const respuestaCache = caches.match(e.request).then( res => {
         if ( res) {
-            res;
+          return  res;
         }
         else {
             return fetch ( e.request).then (respuesta =>{
