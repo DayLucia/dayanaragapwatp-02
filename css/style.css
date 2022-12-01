@@ -7,3 +7,9 @@
 body{
     background-color: #f26d7811;
 }
+.cardCont{
+    padding: 1rem;
+    margin: 1rem;
+    border: 1px solid #3b3b3b;
+    border-radius: 15px;
+}

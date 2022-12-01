@@ -79,8 +79,10 @@ function renderizarNotas(array){
   }else{
     array.forEach(dato => {
       html += `
+      <div class="cardCont">
               <li>${dato.fecha}</li>
-              <li>${dato.notita}</li>`
+              <li>${dato.notita}</li>
+      </div>`
             });
           }
           container.innerHTML = html;
