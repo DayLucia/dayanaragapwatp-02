@@ -30,3 +30,5 @@ self.addEventListener( 'fetch', e =>{
     })
     e.respondWith(respuestaCache)
 })
+
+//ACTUALIZATE VALE
