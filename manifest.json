@@ -1,8 +1,8 @@
 {
 "name": "Notitas Bonitas",
 "short_name": "Nonitas",
-"start_url": "https://daylucia.github.io/dayanaragapwatp-02/index.html",
-"id": "/dayanaragapwatp-02/index.html",
+"start_url": "index.html",
+"id": "index.html",
 "display": "standalone",
 "description":"Aplicación de notas",
 "theme_color": "#1976d2",
