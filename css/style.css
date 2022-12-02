@@ -24,3 +24,6 @@ textarea.materialize-textarea:focus:not([readonly]){
     border-bottom: 1px solid #F28F6B;
     box-shadow: 1px 0 0 #F28F6B;
 }
+.burbuja{
+    background-color: #F28F6B;
+}
