@@ -5,12 +5,12 @@ self.addEventListener('install', function (e){
     console.log(e);
     const cache = caches.open(cacheName).then( cache => {
         return cache.addAll([
-          '/',
+          './',
           'index.html',
           'app.js',
           'icons/android-icon-72x72.png',
           'css/style.css',
-          // 'sw.js',
+          'sw.js',
         ])
     })
     e.waitUntil( cache );
