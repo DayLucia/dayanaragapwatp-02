@@ -76,7 +76,6 @@ function leerNotas(){
         return lista;
   } else{
     console.log('No hay notitas disponibles.')
-    container.innerHTML = `<h1>No hay notitas disponibles</h1>`;
     return lista;
   }
 }
@@ -108,7 +107,12 @@ function infoModal(id, array){
 function borrarNota(e){
   let id     = e.currentTarget.id;
   let indice = lista.indexOf(id);
-  lista.splice(indice, 1);
+  console.log(indice)
+  if(indice != -1){
+    lista.splice(indice, 1);
+  }else{
+    console.log('no se encontro la notita en el array')
+  }
 
   JSON.parse(localStorage.getItem('nota'));
   localStorage.setItem('nota', JSON.stringify(lista))
@@ -122,18 +126,17 @@ function renderizarNotas(array){
   // let htmlModal = ``;
   let html= ``;
   if(array.length == 0){
-    html = `<h1>¡Ups, aun no añadiste notitas!</h1>`;
+    html = `<li class="noNotas">¡Ups, aun no añadiste notitas!</li>`;
     return container.innerHTML = html;
   }else{
     array.forEach(dato => {
       html += `
-      <div class="cardCont">
+      <div class="cardCont modal-trigger" href="#modal2">
       <a class="cont-flex center waves-effect waves-light modal-trigger eventoModal" href="#modal2" id="${dato.id}">
           <li class="fecha">${dato.fecha}</li>
           <li class="titulo">${dato.titulo}</li>
           </a>
           <li class="btnDeleteCss material-icons small delete" id="${dato.id}" style="z-index="500">delete</li>
-          <li>equis</li>
           </div>
           `
           container.innerHTML = html;
@@ -143,8 +146,12 @@ function renderizarNotas(array){
           <div class="divModal">
           <h3>${dato.titulo}</h3>
           <p>${dato.notita}</p>
-          <p class="fechaModal">${dato.fecha}</p>
           </div>
+          `;
+          document.querySelector('.footer-modal').innerHTML = `
+          <p class="fechaModal">${dato.fecha}</p>
+          <a id="btnCerrar" href="#!" class="modal-close waves-effect waves-green btn-flat modal-cerrar">Cerrar</a>
+        
           `;
           modalInfo.innerHTML = htmlModal;
 
@@ -175,9 +182,9 @@ function renderizarNotas(array){
     })
 
   let btnDelete = document.querySelector('.btnDeleteCss');
-  // console.log(btnDelete, 'boton borrar');
-
+  
   btnDelete.addEventListener('click', e =>{
+    console.log(e.currentTarget.id, 'id Nota');
     // if(lista.length != 0){
       borrarNota(e)
   // }
@@ -208,6 +215,7 @@ caches.open(nonitasCache).then(cache =>{
   // cache.add('sw.js');
   cache.add('https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css');
   cache.add('https://fonts.googleapis.com/icon?family=Material+Icons');
+  cache.add('https://fonts.googleapis.com/css2?family=Abel&family=Fredoka+One&family=Lobster&display=swap');
   cache.add('https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js');
   cache.add('icons/android-icon-72x72.png');
   cache.add('icons/android-icon-48x48.png');
