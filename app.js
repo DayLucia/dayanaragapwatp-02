@@ -108,11 +108,11 @@ function borrarNota(e){
   let id     = e.currentTarget.id;
   let indice = lista.indexOf(id);
   console.log(indice)
-  if(indice != -1){
+  // if(indice != -1){
     lista.splice(indice, 1);
-  }else{
-    console.log('no se encontro la notita en el array')
-  }
+  // }else{
+    // console.log('no se encontro la notita en el array')
+  // }
 
   JSON.parse(localStorage.getItem('nota'));
   localStorage.setItem('nota', JSON.stringify(lista))
