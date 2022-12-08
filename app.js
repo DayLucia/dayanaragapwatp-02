@@ -1,11 +1,14 @@
 navigator.serviceWorker.register('/sw.js');
 const btnSave = document.querySelector('#btn-save');
 const textArea = document.querySelector('#text-1');
+const inputTitle = document.querySelector('#text-2');
+let modalInfo = document.querySelector('#modalInfo');
 let container = document.querySelector('.collection');
+let contador = -1;
 let lista = [];
 
 document.addEventListener('DOMContentLoaded', function() {
-    let sideNav = document.querySelectorAll('.sidenav');
+  let sideNav = document.querySelectorAll('.sidenav');
     let instanciaSide = M.Sidenav.init(sideNav  , {});
 
     let modal = document.querySelectorAll('.modal');
@@ -19,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 btnSave.addEventListener('click', ()=>{
   //Obtengo el texto
   let texto = textArea.value;
+  let titulo = inputTitle.value;
   console.log(texto, 'textarea texto');
   //Obtengo la fecha
   let tiempo = Date.now();
@@ -31,18 +35,23 @@ btnSave.addEventListener('click', ()=>{
 
   //Verifico y creo la notita
   if(texto != ""){
+    contador ++;
     nota = {
+      titulo : titulo,
       notita : texto,
-      fecha : fecha,
+      fecha  : fecha,
+      id     : contador,
     }
+    contador = contador;
+    console.log(contador, 'contador antes del push');
     lista.push(nota);
     };
-    //push
     
-    // btnSave.color.blue;
-
+    // actualizo contador
+    
     //limpio textarea
-    textArea.value = '';  
+    textArea.value   = '';  
+    inputTitle.value = '';  
 
     
     console.log(lista, 'notitas');
@@ -60,34 +69,122 @@ function guardarNotas(array){
 
 /* --------- FUNCION 3: Lee los datos del localStorage y lo retorna --------- */
 function leerNotas(){
-  if(localStorage.nota){
-    let traerNota = localStorage.getItem('nota')  
-    lista = JSON.parse(traerNota);
-    console.log(lista, 'lista json')
-      return lista;
+    if(localStorage.nota){
+      let traerNota = localStorage.getItem('nota')  
+      lista = JSON.parse(traerNota);
+      console.log(lista, 'lista json')
+        return lista;
   } else{
     console.log('No hay notitas disponibles.')
+    container.innerHTML = `<h1>No hay notitas disponibles</h1>`;
     return lista;
   }
 }
 
+/****************FUNCTION PARA TRAER INFO POR ID*****************/
+function infoModal(id, array){
+  let dato = ``;
+  array.forEach(datos => {
+    if(datos.id == id){
+      console.log(datos.id, id)
+      dato = `
+        <div class="divModal">
+          <h3>${datos.titulo}</h3>
+          <p>${datos.notita}</p>
+          <p class="fechaModal">${datos.fecha}</p>
+        </div>
+      `;
+      modalInfo.innerHTML = dato;
+      // let btnclose = document.querySelector('#btnCerrar');
+      // console.log(btnclose);
+      // btnclose.addEventListener('click', (e) =>{
+      //   modalInfo.innerHTML = ``;
+      // })
+    }
+  });
+}
+
+/*****************FUNCTION PARA ELIMINAR NOTA*********************/
+function borrarNota(e){
+  let id     = e.currentTarget.id;
+  let indice = lista.indexOf(id);
+  lista.splice(indice, 1);
+
+  JSON.parse(localStorage.getItem('nota'));
+  localStorage.setItem('nota', JSON.stringify(lista))
+  renderizarNotas(lista);
+  // guardarNotas();
+  // leerNotas()
+}
 /* -------- FUNCION 4: Recibe el array y lo renderiza en el container ------- */
 function renderizarNotas(array){
+  // console.log(modal);
+  // let htmlModal = ``;
   let html= ``;
   if(array.length == 0){
     html = `<h1>¡Ups, aun no añadiste notitas!</h1>`;
+    return container.innerHTML = html;
   }else{
     array.forEach(dato => {
       html += `
       <div class="cardCont">
-              <li>${dato.fecha}</li>
-              <li>${dato.notita}</li>
-      </div>`
-            });
-          }
+      <a class="cont-flex center waves-effect waves-light modal-trigger eventoModal" href="#modal2" id="${dato.id}">
+          <li class="fecha">${dato.fecha}</li>
+          <li class="titulo">${dato.titulo}</li>
+          </a>
+          <li class="btnDeleteCss material-icons small delete" id="${dato.id}" style="z-index="500">delete</li>
+          <li>equis</li>
+          </div>
+          `
           container.innerHTML = html;
-  
-}
+          
+          /*****************INFO COMPLETA MODAL*******************/
+          htmlModal = `
+          <div class="divModal">
+          <h3>${dato.titulo}</h3>
+          <p>${dato.notita}</p>
+          <p class="fechaModal">${dato.fecha}</p>
+          </div>
+          `;
+          modalInfo.innerHTML = htmlModal;
+
+          /************************PROBLEMAS CON EL ID***********************/
+          // console.log(modalEvent);
+          
+          // let modalEvent = document.querySelector('.eventoModal');
+          // // console.log(modalEvent);
+          // modalEvent.addEventListener('click', function(e) {
+            
+          //   modalInfo.innerHTML = htmlModal;
+            
+          // })
+      // modalEvent.addEventListener('click', infoModal(dato.id, array));  
+        // let contenido = infoModal(dato.id, array);
+        // // console.log(e)
+        // //   modalInfo.innerHTML += `
+        // //     <div class="divModal">
+        // //       <h3>${dato.titulo}</h3>
+        // //       <p>${dato.notita}</p>
+        // //       <p class="fechaModal">${dato.fecha}</p>
+        // //     </div>
+        // //     `;
+      // })
+    // });
+    // }
+  // modalInfo.innerHTML = htmlModal;
+    })
+
+  let btnDelete = document.querySelector('.btnDeleteCss');
+  // console.log(btnDelete, 'boton borrar');
+
+  btnDelete.addEventListener('click', e =>{
+    // if(lista.length != 0){
+      borrarNota(e)
+  // }
+  })}
+
+
+
 
 /**********************CACHE************************/
 
@@ -110,14 +207,9 @@ caches.open(nonitasCache).then(cache =>{
   cache.add('css/style.css');
   // cache.add('sw.js');
   cache.add('https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css');
+  cache.add('https://fonts.googleapis.com/icon?family=Material+Icons');
+  cache.add('https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js');
   cache.add('icons/android-icon-72x72.png');
   cache.add('icons/android-icon-48x48.png');
   cache.add('icons/android-icon-36x36.png');
-});
-// 'https://daylucia.github.io/dayanaragapwatp-02/index.html',
-// 'https://daylucia.github.io/dayanaragapwatp-02/app.js',
-// 'https://daylucia.github.io/dayanaragapwatp-02/css/style.css',
-// 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css',
-// 'https://daylucia.github.io/dayanaragapwatp-02/icons/android-icon-72x72.png',
-// 'https://daylucia.github.io/dayanaragapwatp-02/icons/android-icon-48x48.png',
-// 'https://daylucia.github.io/dayanaragapwatp-02/icons/android-icon-36x36.png',
+})}

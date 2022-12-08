@@ -45,8 +45,7 @@
             
         </ul>
 
-
-        <div id="modal1" class="modal">
+        <div id="modal1" class="modal modal1">
           <div class="modal-content">
             <h4>🌸 Nueva notita
             </h4>
@@ -54,6 +53,10 @@
             <div class="row">
               <form class="col s12">
                 <div class="row">
+                  <div class="input-field col s12">
+                    <textarea id="text-2" class="materialize-textarea"></textarea>
+                    <label for="text-2">Titulo</label>
+                  </div>
                   <div class="input-field col s12">
                     <textarea id="text-1" class="materialize-textarea"></textarea>
                     <label for="text-1">Notita</label>
@@ -73,6 +76,19 @@
               <i class="material-icons burbuja">add</i>
           </a>
         </div>
+
+
+      <!-- Modal Trigger -->
+
+      <!-- Modal Structure -->
+      <div id="modal2" class="modal modal-fixed-footer">
+        <div class="modal-content" id="modalInfo">
+
+        </div>
+        <div class="modal-footer">
+          <a id="btnCerrar" href="#!" class="modal-close waves-effect waves-green btn-flat modal-cerrar">Cerrar</a>
+        </div>
+      </div>
 
 
 
