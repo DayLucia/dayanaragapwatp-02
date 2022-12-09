@@ -131,7 +131,7 @@ function renderizarNotas(array){
   }else{
     array.forEach(dato => {
       html += `
-      <div class="cardCont modal-trigger" href="#modal2">
+      <div class="cardCont">
       <a class="cont-flex center waves-effect waves-light modal-trigger eventoModal" href="#modal2" id="${dato.id}">
           <li class="fecha">${dato.fecha}</li>
           <li class="titulo">${dato.titulo}</li>
